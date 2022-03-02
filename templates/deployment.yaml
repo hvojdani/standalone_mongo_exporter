@@ -1,0 +1,32 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ .Chart.Name }}-deployment  
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app.kubernetes.io/instance: mongo-exporter
+      app.kubernetes.io/name: mongo-exporter
+  template:    
+    metadata:
+      annotations:
+        prometheus.io/path: /metrics
+        prometheus.io/port: "9216"
+        prometheus.io/scrape: "true"
+      labels:
+        app.kubernetes.io/instance: mongo-exporter
+        app.kubernetes.io/name: mongo-exporter
+    spec:
+      containers:
+      - name: mongodb-exporter
+        image: {{ .Values.image.repo }}:{{ .Values.image.tag }}        
+        env:
+        - name: MONGODB_URI 
+          value: {{ .Values.mongodb.uri }}
+        resources:
+          limits:
+            memory: "150Mi"
+            cpu: "300m"                  
+        ports:
+        - containerPort: 9216

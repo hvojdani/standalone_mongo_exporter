@@ -1,3 +1,13 @@
 apiVersion: v1
-entries: {}
-generated: "2022-03-02T23:17:42.9022331+03:30"
+entries:
+  mongodb-exporter:
+  - apiVersion: v1
+    appVersion: "1.0"
+    created: "2022-03-02T23:38:27.6161766+03:30"
+    description: A Helm chart for deploying standalone mongodb exporter
+    digest: 2e26e379e87b5355aa351933bdfacd2e6345b0b2b35ee0777e0fe1454f04b0c1
+    name: mongodb-exporter
+    urls:
+    - https://github.com/hvojdani/standalone_mongo_exporter/mongodb-exporter-1.0.0.tgz
+    version: 1.0.0
+generated: "2022-03-02T23:38:27.6095435+03:30"
